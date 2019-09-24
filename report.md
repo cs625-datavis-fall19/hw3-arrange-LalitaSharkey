@@ -6,6 +6,7 @@ Homework 3
 CS 625, Fall 2019
 
 
-References  
+#References  
 https://community.tableau.com/thread/195972
 https://help.tableau.com/current/pro/desktop/en-us/multiple_measures.htm
+https://community.tableau.com/thread/212845
