@@ -12,12 +12,6 @@ Before start jumping into creating visualizations, I have done some observation 
 A few experimental designs were created to find the most effective design. The first one that was created was the dual axises bar chart. It was the first thing that came to my mind when I thought about comparing 2 numeric values. The horizontal axis represented dates and the vertical axis representing the number of both 
 ### Part 2 - Using Programming Language/API (R)  
 ![R_Q1](img/Rplot_Q1.png)
-
-### Extra Credit(Vega-Lite)
-
-## Question 2: In total, how many guests were provided shelter by each church (or pair of churches)?
-### Part 1 - Using Application (Tableau)
-![Q2](img/Q2.png)  
 ```
 MyData <- read.csv(file="merged.csv", header=TRUE, sep=",")
 
@@ -49,6 +43,13 @@ g <- g + theme(plot.title = element_text(color = "black", size = 22, face = "bol
 
 g
 ```
+
+### Extra Credit(Vega-Lite)
+
+## Question 2: In total, how many guests were provided shelter by each church (or pair of churches)?
+### Part 1 - Using Application (Tableau)
+![Q2](img/Q2.png)  
+
 ### Part 2 - Using Programming Language/API (R)
 ### Extra Credit(Vega-Lite)
 
