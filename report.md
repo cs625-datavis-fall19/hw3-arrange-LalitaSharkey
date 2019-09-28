@@ -13,10 +13,19 @@ A few experimental designs were created to find the most effective design. The f
 
 ### Question 2: In total, how many guests were provided shelter by each church (or pair of churches)?
 ![Q2](img/Q2.png)
+<<<<<<< HEAD
+
 ### Question 3: Is total demand for shelter affected by weather?
 ![Q3](img/Q3.png)
+
+=======
+### Question 3: Is total demand for shelter affected by weather?
+![Q3](img/Q3.png)
+>>>>>>> b73ad70ab022f71abe83b46e7a1b8fc934c897c7
 ## Part 2 - Using Programming Language/API (R)
 ### Question 1: What was the breakdown of women vs. men who were provided shelter each night?
+![R_Q3](img/Rplo_Q1.png)
+
 
 ### Question 2: In total, how many guests were provided shelter by each church (or pair of churches)?
 
@@ -34,3 +43,8 @@ https://community.tableau.com/thread/195972
 https://help.tableau.com/current/pro/desktop/en-us/multiple_measures.htm  
 https://community.tableau.com/thread/212845  
 https://community.tableau.com/thread/212880  
+http://www.sthda.com/english/wiki/ggplot2-line-plot-quick-start-guide-r-software-and-data-visualization  
+https://www.datanovia.com/en/blog/ggplot-title-subtitle-and-caption/  
+https://ggplot2.tidyverse.org/reference/scale_date.html  
+https://stackoverflow.com/questions/29357612/plot-labels-at-ends-of-lines 
+https://stackoverflow.com/questions/25015690/r-geom-smooth-what-to-write-in-aes  
