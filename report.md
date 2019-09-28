@@ -30,3 +30,4 @@ A few experimental designs were created to find the most effective design. The f
 https://community.tableau.com/thread/195972  
 https://help.tableau.com/current/pro/desktop/en-us/multiple_measures.htm  
 https://community.tableau.com/thread/212845  
+https://community.tableau.com/thread/212880  
