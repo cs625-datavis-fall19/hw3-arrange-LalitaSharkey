@@ -17,7 +17,38 @@ A few experimental designs were created to find the most effective design. The f
 
 ## Question 2: In total, how many guests were provided shelter by each church (or pair of churches)?
 ### Part 1 - Using Application (Tableau)
-![Q2](img/Q2.png)
+![Q2](img/Q2.png)  
+```
+MyData <- read.csv(file="merged.csv", header=TRUE, sep=",")
+
+require(ggplot2)
+library(tidyverse)
+
+
+names(MyData)[names(MyData) == "ï..Date"] <- "Dates"
+MyData$Dates <-  as.Date(MyData$Dates, "%m/%e/%Y")
+
+g <- ggplot(MyData, aes(x=Dates, group= 1)) 
+g <- g + scale_y_continuous(limits = c(0,110), breaks=seq(0,110,10), minor_breaks=seq(0,110,10))
+g <- g + geom_line(aes(y=Men), colour="#4D79A8", size=2) + 
+  geom_point(aes(y=Men), colour="#4D79A8", size=4) +
+  geom_text(aes(y = Men[49]+7, x = Dates[49], label = "Men"), colour="#4D79A8", size = 6) + 
+  geom_smooth(method = "lm", se=FALSE, color="#4D79A8", 
+              aes(x = Dates, y = Men,group=1), size= 0.8, linetype = "dashed")
+g <- g + geom_line(aes(y=Women), colour="#FA9FA6", size=2) + 
+  geom_point(aes(y=Women),colour="#FA9FA6", size=4) +
+  geom_text(aes(y = Women[49]-7, x = Dates[49], label = "Women"), colour="#FA9FA6", size = 6)  + 
+  geom_smooth(method = "lm", se=FALSE, color="#FA9FA6", 
+              aes(x = Dates, y = Women,group=1), size= 0.8, linetype = "dashed")
+g <- g + theme_minimal()+theme_bw()
+g <- g + scale_x_date(date_labels = "%b %d, %y", date_breaks = "1 day", date_minor_breaks = "1 day")
+g <- g + theme(axis.text.x = element_text(angle = 90 , hjust = 1)) 
+g <- g + labs(title = "The breakdown of women vs. men who were provided shelter each night", 
+              x = "Date", y = "Value") 
+g <- g + theme(plot.title = element_text(color = "black", size = 22, face = "bold", hjust = 0.5))
+
+g
+```
 ### Part 2 - Using Programming Language/API (R)
 ### Extra Credit(Vega-Lite)
 
