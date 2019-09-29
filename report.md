@@ -74,4 +74,5 @@ https://ggplot2.tidyverse.org/reference/scale_date.html
 https://stackoverflow.com/questions/29357612/plot-labels-at-ends-of-lines 
 https://stackoverflow.com/questions/25015690/r-geom-smooth-what-to-write-in-aes  
 https://stackoverflow.com/questions/1660124/how-to-sum-a-variable-by-group  
+https://stackoverflow.com/questions/25906705/creating-horizontally-stacked-bar-chart-with-given-data-in-r
 https://rstudio-pubs-static.s3.amazonaws.com/4305_8df3611f69fa48c2ba6bbca9a8367895.html  
