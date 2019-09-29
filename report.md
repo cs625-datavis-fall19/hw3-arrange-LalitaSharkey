@@ -75,11 +75,15 @@ new_data <- na.omit(new_data)
 new_data
 
 p <- ggplot(data= new_data, aes(y = new_data$V1, x = new_data$Church, fill = new_data$Type))
-p <- p + geom_bar(stat = 'identity') +theme_bw()
+p <- p + geom_bar(stat = 'identity', width = 0.7) +theme_bw()
 p <- p + coord_flip() + scale_fill_manual(values =c("#4D79A8", "#FA9FA6"), name = "Measure Names")
-p <- p + geom_text(aes(new_data$Church, new_data$V2 + 10, label=new_data$V2), vjust=0, hjust = 0) 
+p <- p + geom_text(aes(new_data$Church, new_data$V2 + 10, label=new_data$V2), vjust=0, hjust = 0, size = 4) 
 p <- p + scale_y_continuous(breaks=seq(0,850,50), minor_breaks=seq(0,850,50))
-p <- p + theme(plot.title = element_text(color = "black", size = 22, face = "bold", hjust = 0.5))
+p <- p + theme(plot.title = element_text(color = "black", size = 19, face = "bold", hjust = 0.5))
+p <- p + theme(axis.text.x = element_text(size = 12), axis.text.y = element_text(size = 12),
+               axis.title.x = element_text(size = 14, face = "bold"), 
+               axis.title.y = element_text(size = 14, face = "bold", angle = 0, vjust = 1))
+               
 p <- p + labs(title = "Number of guests were provided shelter by each church (or pair of churches)",
               x = "Church", y = "Number of Guests")
 p
