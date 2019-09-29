@@ -51,6 +51,39 @@ g
 ![Q2](img/Q2.png)  
 
 ### Part 2 - Using Programming Language/API (R)
+![R_Q2](img/Rplot_Q2.png)
+```
+MyData <- read.csv(file="merged.csv", header=TRUE, sep=",")
+require(ggplot2)
+library(tidyverse)
+
+names(MyData)[names(MyData) == "ï..Date"] <- "Dates"
+MyData$Dates <-  as.Date(MyData$Dates, "%m/%e/%Y")
+
+men_data = aggregate(cbind(MyData$Men, MyData$Total.Guests),  by=list(Church=MyData$Church), FUN=sum)
+women_data = aggregate(cbind(MyData$Women, MyData$Total.Guests),  by=list(Church=MyData$Church), FUN=sum)
+men_data$Church = reorder(men_data$Church, men_data$V2)
+women_data$Church = reorder(women_data$Church, women_data$V2)
+men_data
+men_data$Type = "Men"
+women_data$Type = "Women"
+new_data <- rbind(men_data, women_data)
+new_data 
+# drop na
+new_data <- na.omit(new_data)
+
+new_data
+
+p <- ggplot(data= new_data, aes(y = new_data$V1, x = new_data$Church, fill = new_data$Type))
+p <- p + geom_bar(stat = 'identity') +theme_bw()
+p <- p + coord_flip() + scale_fill_manual(values =c("#4D79A8", "#FA9FA6"), name = "Measure Names")
+p <- p + geom_text(aes(new_data$Church, new_data$V2 + 10, label=new_data$V2), vjust=0, hjust = 0) 
+p <- p + scale_y_continuous(breaks=seq(0,850,50), minor_breaks=seq(0,850,50))
+p <- p + theme(plot.title = element_text(color = "black", size = 22, face = "bold", hjust = 0.5))
+p <- p + labs(title = "Number of guests were provided shelter by each church (or pair of churches)",
+              x = "Church", y = "Number of Guests")
+p
+```
 ### Extra Credit(Vega-Lite)
 
 
