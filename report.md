@@ -73,3 +73,4 @@ https://www.datanovia.com/en/blog/ggplot-title-subtitle-and-caption/
 https://ggplot2.tidyverse.org/reference/scale_date.html  
 https://stackoverflow.com/questions/29357612/plot-labels-at-ends-of-lines 
 https://stackoverflow.com/questions/25015690/r-geom-smooth-what-to-write-in-aes  
+https://stackoverflow.com/questions/1660124/how-to-sum-a-variable-by-group
