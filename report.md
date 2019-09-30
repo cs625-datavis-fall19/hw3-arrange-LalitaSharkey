@@ -10,11 +10,8 @@ BeforeI started creating visualizations, I did some observation in order to gain
 ### Part 1 - Using Application (Tableau)  
 ![Q1](img/Q1.png)  
 ### Part 2 - Using Programming Language/API (R)  
-![R_Q1](img/Rplot_Q1.png)   
-### Chart description  
-A couple experimental designs were created to find the most effective design. The first one that was created was the dual axises bar chart. It was the first thing that came to my mind. The vertical axis represent dates while the horizontal axis represented the number of both male and female guests. I designed it to look like a mirror like bar chart where the left hand side depicted infromation of female guests and male infromation were displayed on the right hand side. The first problem I encouter with that design was the chart was heavier on the right side as the numbers of male gues were so much higher than numbers of the female guests. Another problem was the chart was too crowded. since the vertical axis presented 49 bars. Fortunately, once I read the assigned articel, I discover that line chaer was a better option for time serise data. The second design was done by utilizing *dotted line as its mark and colors as its channel.* The second design was obviously a better choice. It was so much cleaner and easier to read especially comparing numbers of male and female guests on each night. I also added a dashed trend line to emphasis the fact that number of male guests were increasing much faster than female guests. I also remove the legend for the 2 color channels but instead I used the label at the end of each line.
-
-
+![R_Q1](img/Rplot_Q1.png)  
+### R Code
 ```
 MyData <- read.csv(file="merged.csv", header=TRUE, sep=",")
 
@@ -46,6 +43,11 @@ g <- g + theme(plot.title = element_text(color = "black", size = 22, face = "bol
 
 g
 ```
+### Chart description  
+A couple experimental designs were created to find the most effective design. The first one that was created was the dual axises bar chart. It was the first thing that came to my mind. The vertical axis represent dates while the horizontal axis represented the number of both male and female guests. I aimed for a mirror like bar chart style where the left hand side depicted infromation of female guests and male infromation were displayed on the right hand side. The first problem I encouter with that design was the chart was heavier on the right side as the numbers of male gues were so much higher than numbers of the female guests. Another problem was the chart was too crowded. since the vertical axis presented 49 bars. Fortunately, once I read the assigned articel, I discover that line chaer was a better option for time serise data. The second design was done by utilizing *dotted line as its mark and colors as its channel.* The second design was obviously a better choice. It was so much cleaner and easier to read especially comparing numbers of male and female guests on each night. I also added a dashed trend line to emphasis the fact that number of male guests were increasing much faster than female guests. I also remove the legend for the 2 color channels but instead I used the label at the end of each line.
+### Experience of using an application versus a programming language/API
+For Tableau, since it was the first question and I tried to aim for some complexed design, it was a daunting expireince in the beginning. It took me a while to understand how to create a dual axis plot. Once I started to get a hang of it, it started to get easier. R was another story since it was not a drag-drop interface like Tableau. I had to a lot of research in order to create a similar dual axis dotted line plot the same way I did using Tableau. The chanlleng was, dates were not plotted on the axis in the right order namely the two dates from Nov 2017 was not in the right place. I tried to sort the dataframe but it did not work. After extended studied, I fould that the reason was because of the date time formats. The my frustration shipped to justified each elements on the plot including maintain look at feel as the Tableau plot. 
+
 
 ### Extra Credit(Vega-Lite)
 
@@ -55,6 +57,7 @@ g
 
 ### Part 2 - Using Programming Language/API (R)
 ![R_Q2](img/Rplot_Q2.png)
+### R Code
 ```
 MyData <- read.csv(file="merged.csv", header=TRUE, sep=",")
 require(ggplot2)
@@ -92,7 +95,6 @@ p <- p + labs(title = "Number of guests were provided shelter by each church (or
 p
 ```
 ### Extra Credit(Vega-Lite)
-
 
 ## Question 3: Is total demand for shelter affected by weather?
 ### Part 1 - Using Application (Tableau)
