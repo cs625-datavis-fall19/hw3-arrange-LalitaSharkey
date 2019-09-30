@@ -11,7 +11,7 @@ BeforeI started creating visualizations, I did some observation in order to gain
 ![Q1](img/Q1.png)  
 ### Part 2 - Using Programming Language/API (R)  
 ![R_Q1](img/Rplot_Q1.png)  
-### R Code
+#### R Code
 ```
 MyData <- read.csv(file="merged.csv", header=TRUE, sep=",")
 
@@ -55,7 +55,7 @@ For Tableau, since it was the first question and I tried to aim for some complex
 
 ### Part 2 - Using Programming Language/API (R)
 ![R_Q2](img/Rplot_Q2.png)
-### R Code
+#### R Code
 ```
 MyData <- read.csv(file="merged.csv", header=TRUE, sep=",")
 require(ggplot2)
@@ -94,13 +94,16 @@ p
 ```
 ### Extra Credit(Vega-Lite)
 ### Question 2 Chart Description 
+To answer the second question with a visualization, I used aligned spatial position as the plot's mark. In addition to answer the main question regarding the numbet of accomodated guests for each church or pair of church, I also would it to provide more information on this vistualization. I decided stacked bar chart was the right answer for me. I used colors as the plot's channel to depict number of male guests guests. To make it easier to the audiance, I also added total number of guests at the end of bar. The legend for color reference was put to the right side of the chart.
+
 ### Question 2 Experience of using an application versus a programming language/API
+The challege of creating this chart with Tableau was how to implement a stacked bar chart. It was not as duanting as when I did the first plot using Tableau. There were many challenges trying to resemble the stacked bar chart using R. I tried with both the default `barplot` and`geom_bar` using `library(ggplot2)`. In the begging nothing would create the stacked bar plot I need. After tried multiple times, I have come to relize that the problem was not about which picking the correct library but it was how the data was stored on the dataframe. I proceeded to manupulate the dataframe and create a new dataframe by using sum function for male and female guests which were grouped by church. I also created a new column for sex which will be used as channel colors. I also added a column that contain number of total guests.
 
 ## Question 3: Is total demand for shelter affected by weather?
 ### Part 1 - Using Application (Tableau)
 ![Q3](img/Q3.png)
 ### Part 2 - Using Programming Language/API (R)
-### R Code
+#### R Code
 ### Extra Credit(Vega-Lite)
 ### Question 3 Chart Description 
 ### Question 3 Experience of using an application versus a programming language/API
