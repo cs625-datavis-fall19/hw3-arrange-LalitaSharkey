@@ -4,8 +4,8 @@ Homework 3
 10/01/2019
 
 CS 625, Fall 2019
-## Initail data observation
-Before start jumping into creating visualizations, I have done some observation in order to gain a better understanding of the datasets. There were 2 datasets given. The first dataset is a daily breakdown information of Norfolk churchs that provide shelters for adults during winter(11/29/2017 to 1/16/2018). The other dataset contains information on daily weather information in the same duration as the first dataset. There were 49 samples in both the datasets.
+## Initail data observation and data transformation 
+Before start jumping into creating visualizations, I did some observation in order to gain a better understanding of the datasets. There were 2 datasets given. The first dataset is a daily breakdown information of Norfolk churchs that provide shelters for adults during winter(11/29/2017 to 1/16/2018). The other dataset contains information on daily weather information in the same duration as the first dataset. There were 49 samples in both the datasets. There were some feilds with missing values and mixed values between numerical and a letter "T". Since question 3 required infromation from both datasets, I decided to join 2 tables using Microsoft Excel Power Query. I also I also normalized some feilds namely "Total Demand",	"Temp Low",	"Precipitation",	"Snow", and	"Snow Depth". The purpoose of normalization was to observe the differnces when plotting the scatter plots for question number 3.
 ## Question 1: What was the breakdown of women vs. men who were provided shelter each night?  
 ### Part 1 - Using Application (Tableau)  
 ![Q1](img/Q1.png)
