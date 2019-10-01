@@ -99,6 +99,9 @@ To answer the second question with a visualization, I used aligned spatial posit
 ### Question 2 Experience of using an application versus a programming language/API
 The challege of creating this chart with Tableau was how to implement a stacked bar chart. It was not as duanting as when I did the first plot using Tableau. There were many challenges trying to resemble the stacked bar chart using R. I tried with both the default `barplot` and`geom_bar` using `library(ggplot2)`. In the begging nothing would create the stacked bar plot I need. After tried multiple times, I have come to relize that the problem was not about which picking the correct library but it was how the data was stored on the dataframe. I proceeded to manupulate the dataframe and create a new dataframe by using sum function for male and female guests which were grouped by church. I also created a new column for sex which will be used as channel colors. I also added a column that contain number of total guests.
 
+Below is the image of how the new aggegrated dataframe.
+![New Dataframe](img/new_data.png)
+
 ## Question 3: Is total demand for shelter affected by weather?
 ### Part 1 - Using Application (Tableau)
 ![Q3](img/Q3.png)
