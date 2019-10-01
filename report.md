@@ -103,6 +103,7 @@ The challege of creating this chart with Tableau was how to implement a stacked 
 ### Part 1 - Using Application (Tableau)
 ![Q3](img/Q3.png)
 ### Part 2 - Using Programming Language/API (R)
+![R_Q3](img/Rplot_Q3.png)
 #### R Code
 ### Extra Credit(Vega-Lite)
 ### Question 3 Chart Description 
@@ -123,3 +124,4 @@ https://stackoverflow.com/questions/1660124/how-to-sum-a-variable-by-group
 https://stackoverflow.com/questions/25906705/creating-horizontally-stacked-bar-chart-with-given-data-in-r
 https://rstudio-pubs-static.s3.amazonaws.com/4305_8df3611f69fa48c2ba6bbca9a8367895.html  
 http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/81-ggplot2-easy-way-to-mix-multiple-graphs-on-the-same-page/  
+https://stackoverflow.com/questions/45834775/ggplot2-remove-axis-label  
