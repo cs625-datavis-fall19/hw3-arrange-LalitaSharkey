@@ -105,6 +105,53 @@ The challege of creating this chart with Tableau was how to implement a stacked 
 ### Part 2 - Using Programming Language/API (R)
 ![R_Q3](img/Rplot_Q3.png)
 #### R Code
+```
+library(ggpubr)
+require(ggplot2)
+library(tidyverse)
+MyData <- read.csv(file="merged.csv", header=TRUE, sep=",")
+
+names(MyData)[names(MyData) == "ï..Date"] <- "Dates"
+MyData$Dates <-  as.Date(MyData$Dates, "%m/%e/%Y")
+
+MyData <- na.omit(MyData)
+
+s <- ggplot(MyData, aes(x=Precipitation, y=Total.Demand, color=Church)) + theme_bw()
+s <- s + geom_point(size = 4) + theme(legend.position = "none") 
+s <- s + scale_color_manual(values=c("#47638A", "#D58D45", "#BD6265", "#73B6A5", 
+                                    "#698F5C", "#E1D35D", "#937A90"))
+s <- s + labs(title = "")
+s <- s + theme(plot.title = element_text(color = "black", size = 22, face = "bold", hjust = 0.5))
+
+s1  <- ggplot(MyData, aes(x=Temp.Low, y=Total.Demand, color=Church)) + theme_bw()
+s1 <- s1 + geom_point(size = 4) + theme(legend.position = "none", axis.title.y=element_blank(),
+                                  axis.text.y=element_blank(), axis.ticks.y=element_blank()) 
+s1 <- s1 + scale_color_manual(values=c("#47638A", "#D58D45", "#BD6265", "#73B6A5", 
+                                     "#698F5C", "#E1D35D", "#937A90"))
+s1 <- s1 + labs(title = "")
+s1 <- s1 + theme(plot.title = element_text(color = "black", size = 22, face = "bold", hjust = 0.5))
+
+s2  <- ggplot(MyData, aes(x=Snow.Depth, y=Total.Demand, color=Church)) + theme_bw()
+s2 <- s2 + geom_point(size = 4) + theme(legend.position = "none" , axis.title.y=element_blank(),
+                                  axis.text.y=element_blank(), axis.ticks.y=element_blank())
+s2 <- s2 + scale_color_manual(values=c("#47638A", "#D58D45", "#BD6265", "#73B6A5", 
+                                     "#698F5C", "#E1D35D", "#937A90"))
+s2 <- s2 + labs(title = "Relationship between demand for shelter and weather")
+s2 <- s2 + theme(plot.title = element_text(color = "black", size = 22, face = "bold", hjust = 1))
+
+
+s3  <- ggplot(MyData, aes(x=Snow, y=Total.Demand, color=Church)) 
+s3 <- s3 + geom_point(size = 4) +theme_bw() + theme(axis.title.y=element_blank(),
+                                axis.text.y=element_blank(), axis.ticks.y=element_blank())
+s3 <- s3 + scale_color_manual(values=c("#47638A", "#D58D45", "#BD6265", "#73B6A5", 
+                                     "#698F5C", "#E1D35D", "#937A90"))
+s3 <- s3 + labs(title = "")
+s3 <- s3 + theme(plot.title = element_text(color = "black", size = 22, face = "bold", hjust = 0.5))
+
+
+ggarrange(s, s1, s2, s3, ncol = 4, nrow = 1, widths = c(0.6,0.5,0.5,1), heights = c(0.5,0.5,0.5,0.5))
+
+```
 ### Extra Credit(Vega-Lite)
 ### Question 3 Chart Description 
 ### Question 3 Experience of using an application versus a programming language/API
