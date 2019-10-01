@@ -11,13 +11,14 @@ before I started creating visualizations, I did some observation to gain a bette
 ![Q1](img/Q1.png)  
 ### Part 2 - Using Programming Language/API (R)  
 ![R_Q1](img/Rplot_Q1.png)  
-
-### Extra Credit(Vega-Lite)
+### Part 3 - Vega-Lite (Unfinished)
+![Vega_Lite_Q1](img/Vega_Q1.png) 
 ### Question 1 Chart Description  
 A couple of experimental designs were created to find the most effective design. The first one that was created was the dual axises bar chart. It was the first thing that came to my mind. The vertical axis representing dates while the horizontal axis representing the number of both male and female guests. I aimed for a mirror-like bar chart style where the left-hand side depicted information of female guests and male information was displayed on the right-hand side. The first problem I encountered with that design was the chart was heavier on the right side as the numbers of male gues were so much higher than the numbers of the female guests. Another problem was the chart was too crowded. since the vertical axis presented 49 bars. Fortunately, once I read the assigned article, I discover that the line chart was a better option for time series data. The second design was done by utilizing *dotted line as its mark and colors as its channel.* The second design was obviously a better choice. It was so much cleaner and easier to read especially comparing numbers of male and female guests on each night. I also added a dashed trend line to emphasis the fact that the number of male guests was increasing much faster than female guests. I also removed the legend for the 2 color channels but instead, I used the label at the end of each line as I recall from the class that it easier for the audience understanding. I pick a blue color to represent the number of male guests and pink for female guests as they are gender color stereotypes. I believed without the line labels or legend the audience can still understand the reference. Instead of having smooth lines, I added dots in order to simplify the actual position of the values on certain dates. It could be quite difficult to virtually draw a straight line from the x-axis and look for the correct y value.
 ### Question 1 Experience of using an application versus a programming language/API
 For Tableau, since it was the first question and I tried to aim for some complexed design, it was a daunting experience in the beginning. The first confusing was how to load a CSV file to Tableau. It took a few trials and errors to figure out I needed to select "Text file" option.  It also took me a while to understand how to create a dual-axis plot. Once I started to get a hang of it, it started to get easier. 
 R was a different story since it was not a drag-drop interface like Tableau. I had to a lot of research in order to create a similar dual-axis dotted line plot the same way I did use Tableau. The challenge was, dates were not plotted on the x-axis in the right order namely the two dates from Nov 2017 were not in the right position. I tried to sort the data frame but it did not work. After extended studied, I found that the reason was because of the date-time formats. The date-time has to be read in with the specified format using ` MyData$Dates <-  as.Date(MyData$Dates, "%m/%e/%Y")`. That did not solve all the problem. I had to also reformat the output date-time that displayed on the x-axis as well using `scale_x_date(date_labels = "%b %d, %y")`. The other challenge was to justified and format elements on the plot including maintaining the look at feeling as the Tableau plot.  
+Unfortunately, I couldn't finish my Vega-Lite as I was running out of time. However, I found it to be very a interesting API.
 
 ## Question 2: In total, how many guests were provided shelter by each church (or pair of churches)?
 ### Part 1 - Using Application (Tableau)
@@ -26,7 +27,6 @@ R was a different story since it was not a drag-drop interface like Tableau. I h
 ### Part 2 - Using Programming Language/API (R)
 ![R_Q2](img/Rplot_Q2.png)
 
-### Extra Credit(Vega-Lite)
 ### Question 2 Chart Description 
 To answer the second question with visualization, I used *the aligned spatial position as the plot's main channels and bars as the mark.* Besides, answering only the main question regarding the number of accommodated guests for each church or pair of the church, I believed I could provide more information on this visualization without making it too hard to understand. I decided the horizontal stacked bar chart was the right answer for me. I used *colors* as the plot's channel to depict the number of male guests. To make it easier for the audience to read the total numbers, I also added the total number of guests at the end of the bar. The legend for color reference was put to the right side of the chart. Similar to question 1, I stick to the gender color stereotypes as the theme for this plot as well. The plot was designed to display the number of total guests in descending order which I believe to be easier for comparison. 
 
@@ -42,13 +42,36 @@ Below is the image of the new aggregated data frame.
 ![Q3](img/Q3.png)
 ### Part 2 - Using Programming Language/API (R)
 ![R_Q3](img/Rplot_Q3.png)
-### Extra Credit(Vega-Lite)
 ### Question 3 Chart Description 
 My first thought was to answer this question with correlation heatmap. I  attempt to create it with Tableau and that when I changed my mind and created 4 side by side scatter plots instead. Details about the correlation heatmap with Tableau can be found in the next section. *Mark of the plot was points and channels were color and position.*  The position from y-axis represented the number of shelter demand. There were 4 x-axises which represented precipitation, temperature low, snow depth, and snow values. I created 4 different x-axises because the range of value x was very varied. For example, the range of precipitation was from 0 - 1.5. However, the range of temp low was around 60. If I put all 4 features in the same plot. It will be too difficult to justify the right position of each point. To illustrate, most points will be clustered near x-axis and that can cause misinterpretation of the visualization. Different colors were used as one of the channels to indicate different churches. According to the result, there were some obvious clusters of churches. My assumption is the colored clusters were there because of the churches maximum capacities. 
 ### Question 3 Experience of using an application versus a programming language/API
  librarMy initial thought was question 3 visualizations were going to be the hardest one to create. Surprisingly, the scatter plots were not that difficult to create. I mention in the earlier section that my first thought was to create the correlation heatmap which I did try multiple times until I realized I will need more time to explore the Tableau Calculated Feild. If I had more time, I would like to accomplish that since I think it was a better choice for observing the relationship between multiple features. However, I learned that I need to create a new column in Tableau using "Pearson Correlation Coefficient".  It was unsuccessful according to the time limit since I would like to do some Vega-Lite plots as well.  It was pretty simple creating multiple scatter plots in Tableau. I just needed to drag measure values to column shelf and total demand to row shelf. On the contrary in R, I needed to install a `ggpubr` library so I can use `ggarrange()` function to create multiple scatter plots side by side. Plots formatting was not too hard to manage since it was similar to what I did for the first 2 plots. However, I tried to use the same colors for both Tableau and R plots but somehow the colors on R plots seemed to be a little darker.
 ## Vega-Lite Observable
 https://observablehq.com/@lalitasharkey/homework-3  
+### Question 1
+```
+{
+  const men = vl.markLine().data(Data).encode(
+    vl.x().fieldT('Date').axis({title: 'Date', format: "%b %d, %y",
+                               labelAngle: -90, tickCount: 49}),
+    vl.y().fieldQ('Men').axis({title: "Value"}),
+  );
+  const women = vl.markLine().data(Data).encode(
+    vl.x().fieldT('Date').axis({title: 'Date', format: "%b %d, %y", 
+                               labelAngle: 90, tickCount: 49}),
+    vl.y().fieldQ('Women'),
+    vl.color().value("#FA9FA6")
+  );
+
+  const wm_d = vl.layer(women, women.markCircle())
+  const m_d = vl.layer(men, men.markCircle())
+  const plot = vl.layer(men, women, wm_d, m_d)    
+ 
+ return plot.render();
+  
+  
+}
+```
 ## R Code
 ### Question 1
 ```
@@ -182,4 +205,5 @@ https://stackoverflow.com/questions/25906705/creating-horizontally-stacked-bar-c
 https://rstudio-pubs-static.s3.amazonaws.com/4305_8df3611f69fa48c2ba6bbca9a8367895.html  
 http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/81-ggplot2-easy-way-to-mix-multiple-graphs-on-the-same-page/  
 https://stackoverflow.com/questions/45834775/ggplot2-remove-axis-label 
-https://observablehq.com/@sfu-iat355/getting-started-with-data
+https://observablehq.com/@sfu-iat355/getting-started-with-data  
+https://observablehq.com/@uwdata/introduction-to-vega-lite
