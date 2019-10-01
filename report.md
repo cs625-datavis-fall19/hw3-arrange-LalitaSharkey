@@ -11,7 +11,41 @@ before I started creating visualizations, I did some observation to gain a bette
 ![Q1](img/Q1.png)  
 ### Part 2 - Using Programming Language/API (R)  
 ![R_Q1](img/Rplot_Q1.png)  
-#### R Code
+
+### Extra Credit(Vega-Lite)
+### Question 1 Chart Description  
+A couple of experimental designs were created to find the most effective design. The first one that was created was the dual axises bar chart. It was the first thing that came to my mind. The vertical axis representing dates while the horizontal axis representing the number of both male and female guests. I aimed for a mirror-like bar chart style where the left-hand side depicted information of female guests and male information was displayed on the right-hand side. The first problem I encountered with that design was the chart was heavier on the right side as the numbers of male gues were so much higher than the numbers of the female guests. Another problem was the chart was too crowded. since the vertical axis presented 49 bars. Fortunately, once I read the assigned article, I discover that the line chart was a better option for time series data. The second design was done by utilizing *dotted line as its mark and colors as its channel.* The second design was obviously a better choice. It was so much cleaner and easier to read especially comparing numbers of male and female guests on each night. I also added a dashed trend line to emphasis the fact that the number of male guests was increasing much faster than female guests. I also remove the legend for the 2 color channels but instead, I used the label at the end of each line.
+### Question 1 Experience of using an application versus a programming language/API
+For Tableau, since it was the first question and I tried to aim for some complexed design, it was a daunting experience in the beginning. It took me a while to understand how to create a dual-axis plot. Once I started to get a hang of it, it started to get easier. R was another story since it was not a drag-drop interface like Tableau. I had to a lot of research in order to create a similar dual-axis dotted line plot the same way I did use Tableau. The challenge was, dates were not plotted on the axis in the right order namely the two dates from Nov 2017 was not in the right place. I tried to sort the data frame but it did not work. After extended studied, I found that the reason was because of the date-time formats. My frustration shipped to justified each element on the plot including maintaining the look at feeling as the Tableau plot.  
+
+## Question 2: In total, how many guests were provided shelter by each church (or pair of churches)?
+### Part 1 - Using Application (Tableau)
+![Q2](img/Q2.png)  
+
+### Part 2 - Using Programming Language/API (R)
+![R_Q2](img/Rplot_Q2.png)
+
+### Extra Credit(Vega-Lite)
+### Question 2 Chart Description 
+To answer the second question with visualization, I used the aligned spatial position as the plot's mark. Besides, to answer the main question regarding the number of accommodated guests for each church or pair of the church, I also would it to provide more information on this visualization. I decided the stacked bar chart was the right answer for me. I used colors as the plot's channel to depict the number of male guests. To make it easier for the audience, I also added the total number of guests at the end of the bar. The legend for color reference was put to the right side of the chart.
+
+### Question 2 Experience of using an application versus a programming language/API
+The challenge of creating this chart with Tableau was how to implement a stacked bar chart. It was not as daunting as when I did the first plot using Tableau. Many challenges were trying to resemble the stacked bar chart using R. I tried with both the default `barplot` and`geom_bar` using `library(ggplot2)`. In the begging, nothing would create the stacked bar plot I need. After tried multiple times, I have come to realize that the problem was not about which picking the correct library but it was how the data was stored in the data frame. I proceeded to manipulate the data frame and create a new data frame by using sum function for male and female guests which were grouped by the church. I also created a new column for sex which will be used as channel colors. I also added a column that contains the number of total guests.
+
+Below is the image of how the new aggregated data frame.
+![New Dataframe](img/new_data.png)
+
+## Question 3: Is total demand for shelter affected by weather?
+### Part 1 - Using Application (Tableau)
+![Q3](img/Q3.png)
+### Part 2 - Using Programming Language/API (R)
+![R_Q3](img/Rplot_Q3.png)
+### Extra Credit(Vega-Lite)
+### Question 3 Chart Description 
+### Question 3 Experience of using an application versus a programming language/API
+
+## R Code
+### Question 1
 ```
 MyData <- read.csv(file="merged.csv", header=TRUE, sep=",")
 
@@ -43,19 +77,7 @@ g <- g + theme(plot.title = element_text(color = "black", size = 22, face = "bol
 
 g
 ```
-### Extra Credit(Vega-Lite)
-### Question 1 Chart Description  
-A couple of experimental designs were created to find the most effective design. The first one that was created was the dual axises bar chart. It was the first thing that came to my mind. The vertical axis representing dates while the horizontal axis representing the number of both male and female guests. I aimed for a mirror-like bar chart style where the left-hand side depicted information of female guests and male information was displayed on the right-hand side. The first problem I encountered with that design was the chart was heavier on the right side as the numbers of male gues were so much higher than the numbers of the female guests. Another problem was the chart was too crowded. since the vertical axis presented 49 bars. Fortunately, once I read the assigned article, I discover that the line chart was a better option for time series data. The second design was done by utilizing *dotted line as its mark and colors as its channel.* The second design was obviously a better choice. It was so much cleaner and easier to read especially comparing numbers of male and female guests on each night. I also added a dashed trend line to emphasis the fact that the number of male guests was increasing much faster than female guests. I also remove the legend for the 2 color channels but instead, I used the label at the end of each line.
-### Question 1 Experience of using an application versus a programming language/API
-For Tableau, since it was the first question and I tried to aim for some complexed design, it was a daunting experience in the beginning. It took me a while to understand how to create a dual-axis plot. Once I started to get a hang of it, it started to get easier. R was another story since it was not a drag-drop interface like Tableau. I had to a lot of research in order to create a similar dual-axis dotted line plot the same way I did use Tableau. The challenge was, dates were not plotted on the axis in the right order namely the two dates from Nov 2017 was not in the right place. I tried to sort the data frame but it did not work. After extended studied, I found that the reason was because of the date-time formats. My frustration shipped to justified each element on the plot including maintaining the look at feeling as the Tableau plot.  
-
-## Question 2: In total, how many guests were provided shelter by each church (or pair of churches)?
-### Part 1 - Using Application (Tableau)
-![Q2](img/Q2.png)  
-
-### Part 2 - Using Programming Language/API (R)
-![R_Q2](img/Rplot_Q2.png)
-#### R Code
+### Question 2
 ```
 MyData <- read.csv(file="merged.csv", header=TRUE, sep=",")
 require(ggplot2)
@@ -92,22 +114,7 @@ p <- p + labs(title = "Number of guests were provided shelter by each church (or
               x = "Church", y = "Number of Guests")
 p
 ```
-### Extra Credit(Vega-Lite)
-### Question 2 Chart Description 
-To answer the second question with visualization, I used the aligned spatial position as the plot's mark. Besides, to answer the main question regarding the number of accommodated guests for each church or pair of the church, I also would it to provide more information on this visualization. I decided the stacked bar chart was the right answer for me. I used colors as the plot's channel to depict the number of male guests. To make it easier for the audience, I also added the total number of guests at the end of the bar. The legend for color reference was put to the right side of the chart.
-
-### Question 2 Experience of using an application versus a programming language/API
-The challenge of creating this chart with Tableau was how to implement a stacked bar chart. It was not as daunting as when I did the first plot using Tableau. Many challenges were trying to resemble the stacked bar chart using R. I tried with both the default `barplot` and`geom_bar` using `library(ggplot2)`. In the begging, nothing would create the stacked bar plot I need. After tried multiple times, I have come to realize that the problem was not about which picking the correct library but it was how the data was stored in the data frame. I proceeded to manipulate the data frame and create a new data frame by using sum function for male and female guests which were grouped by the church. I also created a new column for sex which will be used as channel colors. I also added a column that contains the number of total guests.
-
-Below is the image of how the new aggregated data frame.
-![New Dataframe](img/new_data.png)
-
-## Question 3: Is total demand for shelter affected by weather?
-### Part 1 - Using Application (Tableau)
-![Q3](img/Q3.png)
-### Part 2 - Using Programming Language/API (R)
-![R_Q3](img/Rplot_Q3.png)
-#### R Code
+### Question 3
 ```
 library(ggpubr)
 require(ggplot2)
@@ -155,11 +162,6 @@ s3 <- s3 + theme(plot.title = element_text(color = "black", size = 22, face = "b
 ggarrange(s, s1, s2, s3, ncol = 4, nrow = 1, widths = c(0.6,0.5,0.5,1), heights = c(0.5,0.5,0.5,0.5))
 
 ```
-### Extra Credit(Vega-Lite)
-### Question 3 Chart Description 
-### Question 3 Experience of using an application versus a programming language/API
-
-
 ## References
 https://community.tableau.com/thread/195972  
 https://help.tableau.com/current/pro/desktop/en-us/multiple_measures.htm  
